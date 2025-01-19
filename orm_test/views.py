@@ -18,3 +18,17 @@ def posts_list(request):
     return render(request, 'posts_page.html', {"posts": posts})
 
 
+def post_detail(request, post_id):
+    post = Post.objects.get(id=post_id)
+    return render(request, "post_detail.html", {"post": post})
+
+
+def posts_by_author(request, author_id):
+    author = Author.objects.get(id=author_id)
+
+    if author:
+        posts = Post.objects.filter(author=author)
+    else:
+        posts = []
+
+    return render(request, "posts_by_author.html", {'author': author, 'posts': posts})

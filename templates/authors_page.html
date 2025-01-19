@@ -12,7 +12,9 @@
         <ul class="list-group">
             {% for author in authors %}
                 <li class="list-group-item">
-                    <h5>{{ author }}</h5>
+                    <a href="{% url 'main:posts_by_author' author.id %}">
+                        <h5>{{ author }}</h5>
+                    </a>
                 </li>
             {% endfor %}
         </ul>
